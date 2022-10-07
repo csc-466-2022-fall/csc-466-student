@@ -39,7 +39,7 @@ t = heartdisease_df.loc[X2.index,'heart_disease']
 
 def test_exercise_1():
     seeds = [0,1,2,3,4,5]
-    results = pd.DataFrame(columns=["seed","frac_max_class","accuracy_test","accuracy_train2","accuracy_val"]).set_index("seed")
+    results = pd.DataFrame(columns=["seed","accuracy_test","accuracy_train2","accuracy_val"]).set_index("seed")
     for seed in seeds:
         np.random.seed(seed)
         X_train, X_test, t_train, t_test = train_test_split(X2, t, test_size=0.3)
@@ -48,7 +48,7 @@ def test_exercise_1():
         ## Your solution in evaluate_baseline(...)
         accuracy_test,accuracy_train2,accuracy_val = Lab3_helper.evaluate_baseline(t_test,t_train2,t_val)
 
-        results = results.append(pd.Series([frac_max_class,accuracy_test,accuracy_train2,accuracy_val],index=results.columns,name=seed))
+        results = results.append(pd.Series([accuracy_test,accuracy_train2,accuracy_val],index=results.columns,name=seed))
     m = 1000
     assert np.all(np.round(m*answers['exercise_1'].values.astype(float)) == np.round(m*results.values.astype(float)))
 
