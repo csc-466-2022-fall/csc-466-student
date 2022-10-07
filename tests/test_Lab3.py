@@ -46,7 +46,7 @@ def test_exercise_1():
         X_train2, X_val, t_train2, t_val = train_test_split(X_train, t_train, test_size=0.3)
 
         ## Your solution in evaluate_baseline(...)
-        frac_max_class,accuracy_test,accuracy_train2,accuracy_val = Lab3_helper.evaluate_baseline(t_test,t_train2,t_val)
+        accuracy_test,accuracy_train2,accuracy_val = Lab3_helper.evaluate_baseline(t_test,t_train2,t_val)
 
         results = results.append(pd.Series([frac_max_class,accuracy_test,accuracy_train2,accuracy_val],index=results.columns,name=seed))
     m = 1000
